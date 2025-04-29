@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import Royce.Model.SignUp;
 import Royce.Service.RoyceService;
@@ -30,6 +31,25 @@ public class RoyceController {
 	public String register(@ModelAttribute SignUp signUp) {
 		royceService.saveDetails(signUp);
 		return "redirect:/Royce/SignUp";
+
+	}
+
+	@GetMapping("/Login")
+	public String Login(Model model) {
+		model.addAttribute("LoginUser", new SignUp());
+		return "Login";
+
+	}
+
+	@PostMapping("/ValidUser")
+	public String Valid(@ModelAttribute SignUp signUp) {
+		System.out.println("yo bro");
+		SignUp validateUser = royceService.validateUser(signUp.getUsername(), signUp.getPassword());
+		if (validateUser == null) {
+			return "No user found";
+		}
+		return "HomePage";
+		
 
 	}
 

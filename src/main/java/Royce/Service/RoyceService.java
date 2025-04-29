@@ -15,4 +15,10 @@ public class RoyceService {
 		royceRepo.save(signUp);
 	}
 
+	
+	public SignUp validateUser(String username, String password) {
+	SignUp login = royceRepo.login(username,password);
+		return login;
+	}
+
 }

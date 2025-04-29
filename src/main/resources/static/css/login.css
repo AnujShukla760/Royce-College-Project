@@ -21,6 +21,7 @@ body {
 }
 
 .signUpForm {
+	width:380px;
     font-size: 30px;
     display: block;
     gap: 26px;
@@ -35,7 +36,7 @@ label {
     font-size: 25px;
 }
 h1 {
-	margin-left: 120px;
+    margin-left: 120px;
     color: #2e86de;
 }
 form label {
