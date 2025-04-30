@@ -1,0 +1,40 @@
+body {
+	background-color: black;
+}
+
+button {
+	font-size: 22px;
+	font-weight: 200;
+	padding: 20px;
+	border-radius: 15px;
+	color: white;
+	background-color: black;
+}
+
+#imgStart {
+	border-radius: 175px;
+/* 	margin-left:430px; */
+	cursor:pointer;
+}
+#stop{
+	border-radius:48px;
+}
+#speak{
+	border-radius:48px;
+}
+.images {
+    margin-top: -60px;
+    margin-left: 585px;
+    background-color: black;
+    width: 550px;
+    height: 480px;
+}
+.butts {
+    margin-top: 30px;
+    margin-left: 100px;
+}
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
