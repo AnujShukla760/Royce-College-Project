@@ -1,5 +1,7 @@
 package Royce.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,11 +47,11 @@ public class RoyceController {
 	public String Valid(@ModelAttribute SignUp signUp) {
 		System.out.println("yo bro");
 		SignUp validateUser = royceService.validateUser(signUp.getUsername(), signUp.getPassword());
+
 		if (validateUser == null) {
 			return "No user found";
 		}
 		return "HomePage";
-		
 
 	}
 

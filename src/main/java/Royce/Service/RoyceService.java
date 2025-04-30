@@ -1,5 +1,7 @@
 package Royce.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,12 @@ public class RoyceService {
 	public SignUp validateUser(String username, String password) {
 	SignUp login = royceRepo.login(username,password);
 		return login;
+	}
+
+
+	public List<SignUp> findAll() {
+List<SignUp> Users= royceRepo.findAll();	
+return Users;
 	}
 
 }

@@ -2,17 +2,41 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>SignUp Page</title>
+<title>Home Page</title>
 <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
-	main content is under loading
+
+	<div class="temp">
+		<p id="location"></p>
+		<p id="country"></p>
+		<p id="weatherT"></p>
+		<p id="weatherD"></p>
+		<img src="" id="weather icon" />
+		<p id="oTemp"></p>
+		<p id="feelLikeTemp"></p>
+		<p id="mainT"></p>
+		<p id="MaxT"></p>
+	</div>
+
+
+	<div class="jarvis_setup">
+		<label for="">Your Name</label> <input type="text"> <br>
+		<label for="">Your Location</label> <input type="text"> <br>
+		<label for="">Your Instagram</label> <input type="text"> <br>
+		<label for="">Your GitHub</label> <input type="text"> <br>
+		<label for="">Your Twitter</label> <input type="text"> <br>
+		<label for="">Your LinkedIn </label> <input type="text"> <br>
+		<button id="sub_btn">Submit</button>
+	</div>
+
 	<button id="start">start</button>
 	<button id="stop">stop</button>
 	<button id="speak">speak</button>
 
-
+	<img th:src="@{/images/roycebgs.gif}" alt="royce image">
 
 	<script type="text/javascript " th:src="@{/js/royce.js}"></script>
+
 </body>
 </html>
