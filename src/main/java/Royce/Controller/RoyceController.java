@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+
 import Royce.Model.SignUp;
 import Royce.Service.RoyceService;
 
@@ -43,16 +45,24 @@ public class RoyceController {
 
 	}
 
+	// VALIDATION AND SHOWING NAME LOGIC IN ROYCE INTERFACE.......
 	@PostMapping("/ValidUser")
-	public String Valid(@ModelAttribute SignUp signUp) {
+	public String Valid(@ModelAttribute SignUp signUp, Model model) {
 		System.out.println("yo bro");
 		SignUp validateUser = royceService.validateUser(signUp.getUsername(), signUp.getPassword());
-
 		if (validateUser == null) {
-			return "No user found";
+			return "redirect:/Royce/Login";
 		}
+
+		model.addAttribute("validatedUsername", signUp.getUsername());
 		return "HomePage";
 
 	}
+
+//	@GetMapping("/ShowRoyce")
+//	public String showRoyce(Model model) {
+//		model.addAttribute("name", new SignUp());
+//
+//	}
 
 }

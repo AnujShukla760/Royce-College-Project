@@ -1,13 +1,12 @@
 body {
-/* 	    background-image: url('/images/main.jpg');  */
+	background-image: url('/images/back.jpg');
 	background-size: cover;
 	/* Ensures the image covers the entire background */
 	background-position: center; /* Centers the background image */
 	margin: 0px;
 	padding: 0px;
-/* 	width:100%; */
-/* 	opacity:0.2; */
-	
+	/* 	width:100%; */
+	/* 	opacity:0.2; */
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	background-color: #f2f6fc;
 	background-repeat: no-repeat; /* Prevents the image from repeating */
@@ -21,30 +20,34 @@ body {
 }
 
 .signUpForm {
-	width:380px;
-    font-size: 30px;
-    display: block;
-    gap: 26px;
-/*     margin-top: 31px; */
-    align-items: center;
-    justify-content: center;
+	width: 380px;
+	font-size: 30px;
+	display: block;
+	gap: 26px;
+	/*     margin-top: 31px; */
+	align-items: center;
+	justify-content: center;
 }
+
 label {
-    font-weight: 500;
-    display: block;
-    margin-top: 10px;
-    font-size: 25px;
+	font-weight: 500;
+	display: block;
+	margin-top: 10px;
+	font-size: 25px;
 }
+
 h1 {
-    margin-left: 120px;
-    color: #2e86de;
+	margin-left: 120px;
+	color: #2e86de;
 }
+
 form label {
 	display: block;
 	margin-bottom: 6px;
 	font-weight: 500;
 	color: #333333;
 }
+
 form input[type="text"], form input[type="tel"], form input[type="password"]
 	{
 	width: 100%;
@@ -59,17 +62,20 @@ form input:focus {
 	border-color: #2e86de;
 	outline: none;
 }
+
 form span {
-    font-weight: 400;
-    margin-top: 39px;
-    margin-left: 50px;
+	font-weight: 400;
+	margin-top: 39px;
+	margin-left: 50px;
 }
+
 form a {
-    text-decoration: none;
-    /* display: block; */
-    color: #2e86de;
-    font-weight: 600;
+	text-decoration: none;
+	/* display: block; */
+	color: #2e86de;
+	font-weight: 600;
 }
+
 button[type="submit"] {
 	width: 100%;
 	background-color: #2e86de;
@@ -81,7 +87,7 @@ button[type="submit"] {
 	font-weight: 600;
 	cursor: pointer;
 	transition: background-color 0.3s ease, transform 0.2s ease;
-	margin-left:15px;
+	margin-left: 15px;
 }
 
 button[type="submit"]:hover {
