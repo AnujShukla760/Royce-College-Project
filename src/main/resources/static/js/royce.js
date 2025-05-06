@@ -55,11 +55,11 @@ window.onload=()=>{
 				}
 			}, 200);
 		});
-	//jarvis commands
+	/*//jarvis commands
 	fridayComs.forEach((e) => {
 		document.querySelector(".commands").innerHTML += `<p>#${e}</p><br/>`;
 	});
-
+*/
 
 	//time-clock
 	//time.textContent=`${hrs}:${mins}:${secs}`

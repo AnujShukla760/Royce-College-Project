@@ -8,31 +8,10 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-
-<audio src="power up.mp3" id="turn_on"></audio>
-
-<div class="clock cont">
-	  <img th:src="@{/images/clock1.png}" class="icon">
-	  <p id="time"></p>
-	  </div>
-		
-		<div class="internet cont">
-		<img th:src= "@{/images/internet1.jpg}"class="icon">
-		<p id="internet"></p>
-		</div>
-	
-	<div class="battery cont">
-		<img th:src="@{/images/battery1.png}"class="icon">
-		<p id="battery"></p>			
-		</div> 
-		
 	<h1 style="color: white">
 		Hello  <span th:text="${validatedUsername}" style="color:#4472b8 ; font-weight:1000; font-style:bold;" ></span>  !  I am Royce . How
 		can i help u?
 	</h1>
-	<div class="machine">
-	
-	
 	<div class="temp">
 		<p id="location"></p>
 		<p id="country"></p>
@@ -45,12 +24,6 @@
 		<p id="MaxT"></p>
 	</div>
 
-<img th:src="@{/images/iron_man.gif}" id="iron_man">
-</div>
-
- <div id="start_jarvis_btn" title="start Royce">
-   <img th:src="@{/images/}">
-   </div> -->
 
 	<div class="jarvis_setup">
 		<label for="">Your Name</label> <input type="text"> <br>
@@ -64,11 +37,11 @@
 
 	<div class="images">
 
-		<button id="#start">
+		<button id="imgStart">
 			<img th:src="@{/images/roycebgs.gif}" alt="royce image" id="start">
 		</button>
 		<div class="butts">
-			<button id="stop_jarvis_btn">
+			<button id="stop">
 				<i class="fa-solid fa-stop stop-icon" style="color: red"></i>
 			</button>
 			<button id="speak">
@@ -76,7 +49,7 @@
 			</button>
 		</div>
 	</div>
-	<script type="text/javascript " th:src="@{/js/royce2.js}"></script>
+	<script type="text/javascript " th:src="@{/js/royce.js}"></script>
 
 </body>
 </html>

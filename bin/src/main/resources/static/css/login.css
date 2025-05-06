@@ -1,5 +1,5 @@
 body {
-	background-image: url('/images/signup.jpg');
+	background-image: url('/images/back.jpg');
 	background-size: cover;
 	/* Ensures the image covers the entire background */
 	background-position: center; /* Centers the background image */
@@ -24,10 +24,9 @@ body {
 	font-size: 30px;
 	display: block;
 	gap: 26px;
-	    margin-top: -20px; 
+	/*     margin-top: 31px; */
 	align-items: center;
 	justify-content: center;
-	margin-left:450px;
 }
 
 label {
@@ -45,8 +44,8 @@ h1 {
 form label {
 	display: block;
 	margin-bottom: 6px;
-	font-weight: bold;
-	color: deepskyblue;
+	font-weight: 500;
+	color: #333333;
 }
 
 form input[type="text"], form input[type="tel"], form input[type="password"]
