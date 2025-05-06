@@ -1,135 +1,124 @@
-//1..... setting up the Royce.....
-// elements
+const turn_on = document.querySelector("#turn_on");
+const jarvis_intro = document.querySelector("#j_intro");
+const time = document.querySelector("#time");
+const battery=document.querySelector("#battery");
+const internet=document.querySelector("#internet");
+const machine = document.querySelector(".machine");
+document.querySelector("#start_jarvis_btn").addEventListener("click",()=>{
+	recognition.start()
+})
+fridayComs.push("whats the weather or temperature");
+fridayComs.push("show the full weather report");
+fridayComs.push("are you there - to check fridays presence");
+fridayComs.push("shut down - stop voice recognition");
+fridayComs.push("open google");
+fridayComs.push('search for "your keywords" - to search on google ');
+fridayComs.push("open whatsapp");
+fridayComs.push("open youtube");
+fridayComs.push('play "your keywords" - to search on youtube ');
+fridayComs.push("close this youtube tab - to close opened youtube tab");
+fridayComs.push("open firebase");
+fridayComs.push("open netlify");
+fridayComs.push("open twitter");
+fridayComs.push("open my twitter profile");
+fridayComs.push("open instagram");
+fridayComs.push("open my instagram profile");
+fridayComs.push("open github");
+fridayComs.push("open my github profile");
 
-const startBtn = document.querySelector('#start');
-const stopBtn = document.querySelector('#stop');
-const speakBtn = document.querySelector('#speak');
+// date and time
+let date = new Date();
+let hrs = date.getHours();
+let mins = date.getMinutes();
+let secs = date.getSeconds();
 
-
-
-// speech recognition is started here 
-
-const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-const recognition = new SpeechRecognition();
-recognition.onstart = function() {
-	console.log("vr active");
-};
-
-// Speech is made continuous here 
-recognition.continuous = true;
-recognition.interimResults = true;
-
-
-//speech recognition result that is voice input...
-
-recognition.onresult = function(event) {
-	let current = event.resultIndex;
-	let transcript = event.results[current][0].transcript;
-	transcript = transcript.toLowerCase();
-
-	//console.log(event);
-	//readOut(transcript);
-	console.log(`my words : $ {transcript}`);
-
-	// we are assigning the commnads to the ROYCE here ........
-
-	//1......Greetings .....
-
-	if (transcript.includes("hi royce")) {
-		readOut("hello sir ");
-		console.log("hello sir");
+//autojarvis
+function autojarvis(){
+	setTimeout(()=>{
+		recognition.start()
+		},1000);
 	}
 
-	if (transcript.includes("open youtube")) {
-		readOut("Wait a Moment opening youtube sir");
-		window.open("https://www.youtube.com/");
+
+//onload (window)
+window.onload=()=>{
+	//on startup
+	 turn_on.play();
+		turn_on.addEventListener("ended", () => {
+			setTimeout(() => {
+				 autoJarvis();
+				readOut("Ready to go sir");
+				if (localStorage.getItem("jarvis_setup") === null) {
+					readOut(
+						"Sir, kindly fill out the form on your screen so that you could access most of my features and if you want to see my commands see a warning in the console"
+					);
+				}
+			}, 200);
+		});
+	//jarvis commands
+	fridayComs.forEach((e) => {
+		document.querySelector(".commands").innerHTML += `<p>#${e}</p><br/>`;
+	});
+
+
+	//time-clock
+	//time.textContent=`${hrs}:${mins}:${secs}`
+	setInterval(()=>{
+		let date = new Date();
+		let hrs = date.getHours();
+		let mins = date.getMinutes();
+		let secs = date.getSeconds();
+		time.textContent=`${hrs}:${mins}:${secs}`
+		},1000);
 	}
 
-	if (transcript.includes("open google")) {
-		readOut("Wait a Moment opening google sir");
-		window.open("https://www.google.com/");
-	}
+	// battery
+	let batteryPromise = navigator.getBattery();
+	batteryPromise.then(batteryCallback);
 
-	// 2.........google search
-//
-//	if (transcript.includes("search for")) {
-//		readOut("here are the search results");
-//		let input = transcript.split("");
-//		input.splice(0, 11);
-//		input.pop();
-//		input = input.join("").split(" ").join("+");
-//		console.log(input);
-//		window.open(`https://www.google.com/search?q=${input}`)
-//
-//	}
+	function batteryCallback(batteryObject) {
+			printBatteryStatus(batteryObject);
+			setInterval(() => {
+				printBatteryStatus(batteryObject);
+			}, 5000);
+		}
+		function printBatteryStatus(batteryObject) {
+			battery.textContent=`${batteryObject.level*100}%`
+				if(batteryObject.charging=true){
+				document.querySelector(".battery").style.width="200px"
+			battery.textContent=`${batteryObject.level*100}%charging`
+									}
+									}
+									
+	// internet connectivity
+		//intrenet
+		navigator.online?(internet.textContent="online"):(internet.textcontent="offline")
+		setInterval(()=>{
+			//for internet
+		navigator.online?(internet.textContent="online"):(internet.textcontent="offline")
+				},60000);
+				function formatAMPM(date) {
+					var hours = date.getHours();
+					var minutes = date.getMinutes();
+					var ampm = hours >= 12 ? 'pm' : 'am';
+					hours = hours % 12;
+					hours = hours ? hours : 12; // the hour '0' should be '12'
+					minutes = minutes < 10 ? '0' + minutes : minutes;
+					var strTime = hours + ':' + minutes + ' ' + ampm;
+					currentTime = strTime
+					time.textContent = strTime
+				}
 
+				formatAMPM(date)
+				setInterval(() => {
+					formatAMPM(date)
+				}, 60000);
 
-if (transcript.includes("search for")) {
-    readOut("here are the search results");
-    let input = transcript.substring(transcript.indexOf("search for ") + "search for ".length);
-    input = input.trim().split(" ").join("+");
-    console.log(input);
-    window.open(`https://www.google.com/search?q=${input}`, '_blank');
-}
+				// auto friday
 
-	//3......... playing songs in youtube
-
-
-	if (transcript.includes("play song ")) {
-		readOut("here are the search results");
-		let input = transcript.substring(transcript.indexOf("play song ") + "play song ".length); // Extract song name
-		input = input.trim().split(" ").join("+"); // Clean and format for URL
-		console.log(input);
-		window.open(`https://www.youtube.com/results?search_query=${input}`, '_blank'); // Correct URL and target
-	}
-
-	// 4........weather reports.............
-	
-	
-
-};
-
-// speech recognition is ended here 
-recognition.onend = function() {
-
-	console.log("vr deactive");
-};
-
-
-
-
-startBtn.addEventListener("click", () => {
-	recognition.start();
-});
-
-stopBtn.addEventListener("click", () => {
-	recognition.stop();
-});
-
-// Now Royce gets its voice from here (Royce speech)
-
-function readOut(message) {
-	const speech = new SpeechSynthesisUtterance();
-
-	// different voices
-
-	const allVoices = speechSynthesis.getVoices();
-	speech.text = message;
-	speech.voice = allVoices[32];
-	speech.volume = 1;
-	window.speechSynthesis.speak(speech);
-	console.log("speaking out");
-}
-
-// example code for a speech
-
-speakBtn.addEventListener("click", () => {
-	readOut("hi there i am ready to be used");
-});
-
-window.onload = function() {
-	readOut("    ");
-};
-
-
-
+				function autoJarvis() {
+					setTimeout(() => {
+						recognition.start();
+					}, 1000);
+				}											
+													

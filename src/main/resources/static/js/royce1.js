@@ -2,6 +2,8 @@
 const turn_on = document.querySelector("#turn_on");
 const jarvis_intro = document.querySelector("#j_intro");
 const time = document.querySelector("#time");
+const battery=document.querySelector("#battery");
+const internet=document.querySelector("#internet");
 const machine = document.querySelector(".machine");
 // const msgs = document.querySelector(".messages");
 // whether the recognition is stopiing on my command or automatically
@@ -53,12 +55,47 @@ let hrs = date.getHours();
 let mins = date.getMinutes();
 let secs = date.getSeconds();
 
+//autojarvis
+function autojarvis(){
+	setTimeout(()=>{
+		recognition.start()
+		},1000);
+	}
+
+
+//onload (window)
+window.onload=()=>{
+	//on startup
+	 turn_on.play();
+		turn_on.addEventListener("ended", () => {
+			setTimeout(() => {
+				 autoJarvis();
+				readOut("Ready to go sir");
+				if (localStorage.getItem("jarvis_setup") === null) {
+					readOut(
+						"Sir, kindly fill out the form on your screen so that you could access most of my features and if you want to see my commands see a warning in the console"
+					);
+				}
+			}, 200);
+		});
+	
+	//time-clock
+	//time.textContent=`${hrs}:${mins}:${secs}`
+	setInterval(()=>{
+		let date = new Date();
+		let hrs = date.getHours();
+		let mins = date.getMinutes();
+		let secs = date.getSeconds();
+		time.textContent=`${hrs}:${mins}:${secs}`
+		},1000);
+	}
+
 // this is what friday tells about weather
 let weatherStatement = "";
 let charge, chargeStatus, connectivity, currentTime
 chargeStatus = "unplugged"
 
-window.onload = () => {
+/*window.onload = () => {
 	// turn_on.play();
 	turn_on.addEventListener("ended", () => {
 		setTimeout(() => {
@@ -71,17 +108,52 @@ window.onload = () => {
 			}
 		}, 200);
 	});
-
+*/
 	fridayComs.forEach((e) => {
 		document.querySelector(".commands").innerHTML += `<p>#${e}</p><br />`;
 	});
+	
+	
 	// battery
 	let batteryPromise = navigator.getBattery();
 	batteryPromise.then(batteryCallback);
+	
+	function batteryCallback(batteryObject) {
+			printBatteryStatus(batteryObject);
+			setInterval(() => {
+				printBatteryStatus(batteryObject);
+			}, 5000);
+		}
+		function printBatteryStatus(batteryObject) {
+			battery.textContent=`${batteryObject.level*100}%`
+								if(batteryObject.charging=true){
+									document.querySelector(".battery").style.width="200px"
+									battery.textContent=`${batteryObject.level*100}%charging`
+									}
+									}
+			/*document.querySelector("#battery").textContent = `${(batteryObject.level * 100).toFixed(2)
+				}%`;
+			charge = batteryObject.level * 100
+			if (batteryObject.charging === true) {
+				document.querySelector(".battery").style.width = "200px";
+				document.querySelector("#battery").textContent = `${(batteryObject.level * 100).toFixed(2)
+					}% Charging`;
+				chargeStatus = "plugged in"
+			}
+		*/
 
 	// internet connectivity
 
-	if (navigator.onLine) {
+				//intrenet
+				navigator.online?(internet.textContent="online"):(internet.textcontent="offline")
+			setInterval(()=>{
+				//for internet
+				navigator.online?(internet.textContent="online"):(internet.textcontent="offline")
+			},60000);
+				
+				
+
+	/*if (navigator.onLine) {
 		document.querySelector("#internet").textContent = "online"
 		connectivity = "online"
 	} else {
@@ -98,24 +170,8 @@ window.onload = () => {
 			connectivity = "offline"
 		}
 	}, 60000);
-
-	function batteryCallback(batteryObject) {
-		printBatteryStatus(batteryObject);
-		setInterval(() => {
-			printBatteryStatus(batteryObject);
-		}, 5000);
-	}
-	function printBatteryStatus(batteryObject) {
-		document.querySelector("#battery").textContent = `${(batteryObject.level * 100).toFixed(2)
-			}%`;
-		charge = batteryObject.level * 100
-		if (batteryObject.charging === true) {
-			document.querySelector(".battery").style.width = "200px";
-			document.querySelector("#battery").textContent = `${(batteryObject.level * 100).toFixed(2)
-				}% Charging`;
-			chargeStatus = "plugged in"
-		}
-	}
+*/
+	
 
 	// timer
 	// setInterval(() => {
@@ -125,7 +181,7 @@ window.onload = () => {
 	//   let secs = date.getSeconds();
 	//   time.textContent = `${hrs} : ${mins} : ${secs}`;
 	// }, 1000);
-};
+//};
 
 function formatAMPM(date) {
 	var hours = date.getHours();

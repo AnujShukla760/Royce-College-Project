@@ -11,7 +11,7 @@
 }
 
 body {
-  background-color: black;
+  background-color: white;
 }
 
 button {
@@ -20,8 +20,11 @@ button {
   left: 50%; */
 }
 label {
-  color: rgb(163, 0, 0);
+	 color: aliceblue;
+ /*  color: rgb(163, 0, 0); */
   text-align: left;
+      font-size: xx-large;
+  
 }
 input {
   color: black;
@@ -33,7 +36,7 @@ input {
 
 #sub_btn {
   background-color: red;
-  color: white;
+  color:black;
   width: 80px;
   padding: 10px 5px;
   outline: none;
@@ -273,4 +276,13 @@ input {
   #start_jarvis_btn {
     display: none;
   }
+}
+
+button {
+    font-size: 22px;
+    font-weight: 200;
+    padding: 20px;
+    border-radius: 15px;
+    color: black;
+    background-color: red;
 }
