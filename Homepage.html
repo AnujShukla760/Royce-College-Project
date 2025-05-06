@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Home Page</title>
+<link rel="stylesheet" th:href="@{/css/main.css}">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+
+	<h1 style="color: white">
+		Hello <span th:text="${validatedUsername}"
+			style="color: #4472b8; font-weight: 1000; font-style: bold;"></span>
+		! I am Royce . How can i help u?
+	</h1>
+	<div class="machine">
+
+
+		<div class="temp">
+			<p id="location"></p>
+			<p id="country"></p>
+			<p id="weatherT"></p>
+			<p id="weatherD"></p>
+			<img src="" id="weather icon" />
+			<p id="oTemp"></p>
+			<p id="feelLikeTemp"></p>
+			<p id="mainT"></p>
+			<p id="MaxT"></p>
+		</div>
+
+		<img th:src="@{/images/iron_man.gif}" id="iron_man">
+	</div>
+
+	<div id="start_jarvis_btn" title="start Royce">
+		<img th:src="@{/images/}">
+	</div>
+	-->
+
+	<div class="jarvis_setup">
+		<label for="">Your Name</label> <input type="text"> <br>
+		<label for="">Your Location</label> <input type="text"> <br>
+		<label for="">Your Instagram</label> <input type="text"> <br>
+		<label for="">Your GitHub</label> <input type="text"> <br>
+		<label for="">Your Twitter</label> <input type="text"> <br>
+		<label for="">Your LinkedIn </label> <input type="text"> <br>
+		<button id="sub_btn">Submit</button>
+	</div>
+
+	<div class="images">
+
+		<button id="imgStart">
+			<img th:src="@{/images/roycebgs.gif}" alt="royce image" id="start">
+		</button>
+		<div class="butts">
+			<button id="stop_jarvis_btn">
+				<i class="fa-solid fa-stop stop-icon" style="color: red"></i>
+			</button>
+			<button id="speak">
+				<i class="fa-solid fa-volume-high speaker-icon" style="color: red"></i>
+			</button>
+		</div>
+	</div>
+	<script type="text/javascript " th:src="@{/js/royce2.js}"></script>
+
+</body>
+</html>
