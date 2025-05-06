@@ -55,7 +55,7 @@ public class RoyceController {
 		}
 
 		model.addAttribute("validatedUsername", signUp.getUsername());
-		return "HomePage";
+		return "index";
 
 	}
 

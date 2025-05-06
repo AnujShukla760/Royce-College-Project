@@ -1,7 +1,7 @@
 //1..... setting up the Royce.....
 // elements
 
-const startBtn = document.querySelector('#start');
+const startBtn = document.querySelector('#"start_jarvis_btn"');
 const stopBtn = document.querySelector('#stop');
 const speakBtn = document.querySelector('#speak');
 
