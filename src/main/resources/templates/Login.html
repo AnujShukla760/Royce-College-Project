@@ -1,18 +1,19 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>SignUp Page</title>
-<link rel="stylesheet" th:href="@{/css/login.css}">
+<title>Login Page</title>
+<link rel="stylesheet" th:href="@{/css/signup.css}">
 </head>
 <body>
 	<div class="First">
 
-		<!--  <div class="signupimage">
-			<img th:src="@{/images/signups.gif}" alt="Example Image">
-		</div>  -->
+		<div class="signupimage">
+			<img th:src="@{/images/heart.gif}" alt="Example Image">
+		</div>
 		<div class="signUpForm">
-			<h1>Login </h1>
+			<h1>Login</h1>
 			<form th:object="${LoginUser}" th:action="@{/Royce/ValidUser}"
 				method="post">
 				<label for="username">UserName</label> <input type="text"
@@ -22,6 +23,8 @@
 
 				<button type="submit">Submit</button>
 
+				<span style="color: #2e86de">New User ? <a
+					th:href="@{/Royce/SignUp}"> Sign Up</a></span>
 			</form>
 		</div>
 

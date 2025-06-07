@@ -1,7 +1,5 @@
 package Royce.Controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,9 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
 import Royce.Model.SignUp;
 import Royce.Service.RoyceService;
@@ -55,14 +50,8 @@ public class RoyceController {
 		}
 
 		model.addAttribute("validatedUsername", signUp.getUsername());
-		return "index";
+		return "Home";
 
 	}
-
-//	@GetMapping("/ShowRoyce")
-//	public String showRoyce(Model model) {
-//		model.addAttribute("name", new SignUp());
-//
-//	}
 
 }
